@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "d14861e8-7126-4069-a881-22af8f45c236",
+		"name": "e3mel-business",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@test.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/v1/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "user@domain.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "User",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/v1/register",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/v1/user",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data",
+			"item": [
+				{
+					"name": "Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/v1/categories",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/v1/courses",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "http://e3mel-business.de/api"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWExYmI2NTA1MDVmMDEzMWJjNGIyMzJjNjUwZTk5ZDg1YTViMTUwMTBkYWQ4YjJlZWVhYjZmZmFkNzA0NmViN2IyZmM5ZWVhZjI3MGFmYjYiLCJpYXQiOjE2NDIwMjc0ODAsIm5iZiI6MTY0MjAyNzQ4MCwiZXhwIjoxNjczNTYzNDgwLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.eDGORztw6dRBx1eqj3rz82tRnKcE-zy_QAXaaXu8XogJ-GhAJavbqyEXArogh_GERZPvF35J618lhl5dvfcTFT15BTnVNgWiIaQRRZVqFFBlhttKhPTG4O_qlWmLdeRnJECYihwaR5uVX7-PLc7xm5DevCih2zhcV39U2Diie1rK7s7jZ79XIcGfiq2SDF5hSgVtxJe6RCI5bLn8fAZ9jlW5LqwdCuupyMkQRneveHpNfapJXL4MhQZkNyM8EotVMWyJ9IWB71oqgRbkFcWn9A1uVjhcIMFXJJNxLSsa87G669QuKfwUf1x6hyjY3TPcTvgr9ehfkBgqlkkkN_ylor4IUMzE0QHBl4si9Pnq-Uv3vH4oiCo_gSJGqxNwx7-hJgIPbjiB1XHia8ejLIhB8vQY-RjeRLIMY4-ic2uN4DA2UdIRKTDGc_yamUB153rkpJI5TlYyJaBO2CayUi4wE4Tq8oNCEEPlw0HtC0vjlBAniXhA7bvL_Kmgadp1kJ3rsDWnbjGBNtKUW0kfkkmeG_mFBBRMrAMea60mjTz1gXlvzRrzTaOQ3myNUfrciEb-sYyNC0yTPxF_3v2GdsnOIlW09dBKc2SIWfXabb1z6Yt8yPCiic-xQT0iz7c0P9kyGPlo51CpHCxzC0WqCS7b9UCfy0ytolXwsQgZ6OIbrrE"
+		}
+	]
+}
