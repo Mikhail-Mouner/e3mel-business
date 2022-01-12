@@ -13,7 +13,7 @@ class CategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return TRUE;
     }
 
     /**
@@ -23,8 +23,31 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch ($this->method()) {
+            case 'GET':
+            case 'DELETE':
+            {
+                return [];
+            }
+            case 'POST':
+            {
+                return [
+                    'name' => 'required|string|unique:App\Models\Category,name|min:3|max:191',
+                    'active' => 'required|numeric|boolean',
+                ];
+            }
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                    'name' => 'required|string|unique:App\Models\Category,name,' . $this->route()->category->id . '|min:3|max:191',
+                    'active' => 'required|numeric|boolean',
+                ];
+            }
+            default:
+                break;
+        }
+
     }
+
 }

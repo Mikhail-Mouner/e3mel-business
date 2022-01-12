@@ -13,10 +13,19 @@ class CreateCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create( 'courses', function (Blueprint $table) {
             $table->id();
+            $table->string( 'name' );
+            $table->text( 'description' );
+            $table->unsignedTinyInteger( 'rating' )->nullable();
+            $table->unsignedInteger( 'view' )->default( 0 );
+            $table->enum( 'level', [ 'beginner', 'immediate', 'high' ] );
+            $table->unsignedInteger( 'hours' )->nullable();
+            $table->boolean( 'active' )->default( TRUE );
+            $table->foreignId( 'category_id' )->constrained()->cascadeOnDelete();
+            $table->softDeletes();
             $table->timestamps();
-        });
+        } );
     }
 
     /**
@@ -26,6 +35,7 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists( 'courses' );
     }
+
 }
