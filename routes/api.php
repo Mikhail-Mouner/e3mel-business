@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\{
     CategoryController,
-    CourseController
+    CourseController,
+    UserAuthController
 };
 
 /*
@@ -18,10 +19,18 @@ use App\Http\Controllers\Api\{
 |
 */
 Route::prefix( 'v1' )
-    ->middleware( 'auth:sanctum' )
     ->group( function () {
-        Route::get( '/categories', [ CategoryController::class, 'index' ] );
-        Route::get( '/courses', [ CourseController::class, 'index' ] );
+
+        Route::post( 'register', [ UserAuthController::class, 'register' ] );
+        Route::post( 'login', [ UserAuthController::class, 'login' ] );
+
+        Route::get( '/categories/list', [ CategoryController::class, 'list' ] )->name( 'categories.list' );
+        Route::get( '/courses/list', [ CourseController::class, 'list' ] )->name( 'courses.list' );
+
+        Route::middleware( 'auth:api' )
+            ->group( function () {
+                Route::get( '/categories', [ CategoryController::class, 'index' ] );
+                Route::get( '/courses', [ CourseController::class, 'index' ] );
+                Route::get( 'user', [ UserAuthController::class, 'me' ] );
+            } );
     } );
-Route::get( '/categories/list', [ CategoryController::class, 'list' ] )->name('categories.list');
-Route::get( '/courses/list', [ CourseController::class, 'list' ] )->name('courses.list');

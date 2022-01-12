@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::get();
+        $categories = Category::Active()->get();
         $courses = Course::select( 'rating' )->get();
         $ratings = collect( $courses )->groupBy( 'rating' );
 
